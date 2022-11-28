@@ -17,7 +17,7 @@
   // "postCreateCommand": "uname -a",
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "mounts": [
-    "source=${localWorkspaceFolder}/.devcontainer/.latexmkrc,/home/vscode/.latexmkrc,type=bind,consistency=cached"
+    "source=${localWorkspaceFolder}/.devcontainer/.latexmkrc,target=/home/vscode/.latexmkrc,type=bind,consistency=cached"
   ],
   "remoteUser": "vscode",
   "customizations": {
