@@ -31,18 +31,31 @@
   \item[$i \in I$] index of bids
   \item[$n = |I|$] number of bids
   \item[$\{d_i\}_{i \in I}$] the deposit amount of $i$ th bid
-  \item[$\{r_i\}_{i \in I}$] the interest rate of $i$ th bid
-  \item[$\{t_i\}_{i \in I}$] the expiration date of $i$ th bid
-  \item[$q$] $q = \frac{1}{n} \sum_{i \in I} p_i$. upper bound of $s$
-  \item[$s$] $s = \sum_{i \in I} d_i$. means the amount which lister can borrow with NFT as collateral
+  \item[$\{r_i\}_{i \in I}$] the interest rate of $i$ th bid (not annualized. for the period between the start and expiration date)
+  \item[$\{x_i\}_{i \in I}$] the expiration date of $i$ th bid
+  \item[$t$] current time 
+  \item[$q$] the average of $p_i$ and the upper bound of $s$
+  \item[$s$] the sum of deposits and the amount which lister can borrow with NFT as collateral
   \item[$\{a_i\}_{i \in I}$] means the amount borrowed from $i$ th bid deposit
-  \item[$b$] $b = \sum_{i \in I} a_i$. sum of $a_i$
-  \item[$i_p(j)$] means the index of the $j$ th highest price bid
-  \item[$i_d(j)$] means the index of the $j$ th highest deposit amount bid
-  \item[$i_r(j)$] means the index of the $j$ th lowest interest rate bid
-  \item[$i_t(j)$] means the index of the $j$ th farthest expiration date bid
+  \item[$b$] the sum of $a_i$
+  \item[$i_p(j)$] the index of the $j$ th highest price bid
+  \item[$i_d(j)$] the index of the $j$ th highest deposit amount bid
+  \item[$i_r(j)$] the index of the $j$ th lowest interest rate bid
+  \item[$i_t(j)$] the index of the $j$ th farthest expiration date bid
   \item[$c$] minimum deposit rate
 \end{itemize}
+
+$$
+  q = \frac{1}{n} \sum_{i \in I} p_i
+$$
+
+$$
+  s = \sum_{i \in I} d_i
+$$
+
+$$
+  b = \sum_{i \in I} a_i
+$$
 
 \subsubsection{State transition}
 
@@ -61,31 +74,64 @@ When $(p_{\text{new}}, d_{\text{new}}, r_{\text{new}}, t_{\text{new}})$ will be 
 
 where the prime means the next state.
 
-The constraint of $d_{n+1}'$ is
+The constraint of $d_{\text{new}}$ is
 
 $$
-  c p_{n+1}' \le d_{n+1}' \le q' - s
+  c p_{\text{new}} \le d_{\text{new}} \le q' - s
 $$
 
 In easy expression, it means
 
 \begin{itemize}
-  \item $c p_{n+1}' \le d_{n+1}'$
-  \item $s' = s + d_{n+1}' \le q'$
+  \item $c p_{\text{new}} \le d_{\text{new}}$
+  \item $s' = s + d_{\text{new}} \le q'$
 \end{itemize}
 
-New borrowing
+The former inequation means that
+the deposit of the new bid must be greater than or equal to minimum deposit amount,
+that is defined by multiplying $c$, the minimum deposit rate, to $p_{n+1}'$, the bid price .
+The latter inequation means that $s'$, the sum of deposits, must be lower than or equal to $q'$, the average of bid prices.
+To increase the deposit amount of the new bid
+to increase the probability of getting the chance of settlement when the liquidation of collateral occurs,
+the new bidder has no way without increasing $p_{\text{new}}$ to increase $q'$.
 
-$a_i$ must follow the constraint
+When the NFT lister newly borrow assets, $a_i$ must follow the constraint
 
 $$
-  a_i \le d_i \Rightarrow b \le s
+  a_i \le d_i
 $$
 
-Deposited amount must be consumed (used for lending resource) in ascending order of interest rates.
+Trivially the follwing inequation will be satisfied
+
+$$
+  b \le s
+$$
+
+Deposited amount must be consumed (used for lending resource) in ascending order of interest rates,
+so the following constraint must be satisfied.
 
 $$
   a_{i_r(j+1)} = 0 \ \text{if} \ a_{i_r(j)} < d_{i_r(j)}
 $$
+
+When the $i_r(j)$ th bid expire, $x_{i_r(j)} = t$, there are two paths to diverge,
+
+First, if the lister configured the automatic refunding when the listing, $a_{i_r(j)}$ the borrowed amount from $i_r(j)$ th bid will be automatically repaid and then
+the lister will automatically borrow the same amount from the deposit whose interest rate is the next lowest.
+
+\begin{align}
+  a_{i_r(j + k)} &= d_{i_r(j + k)} & \forall k \in \{1 : m-1\} \\
+  a_{i_r(j + m)} &= \sum_{l=1}^m \left( d_{i_r(j+l)} - a_{i_r(j+l)} \right) - (1 + r_{i_r(j)}) a_{i_r{j}} &
+\end{align}
+
+where $m$ is defined as
+
+$$
+  m = \left\{\begin{aligned}
+    \min && \ m & \in \mathbb{N} \\
+    \text{subject to} && \ (1 + r_{i_r(j)}) a_{i_r{j}} & \le \sum_{l=1}^m {d_{i_r(j+l)} - a_{i_r(j+l)}}
+  \end{aligned}\right.
+$$
+
 
 \end{document}
