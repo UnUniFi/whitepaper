@@ -57,6 +57,20 @@ $$
   b = \sum_{i \in I} a_i
 $$
 
+\subsubsection{Acceptance of the bid}
+
+The lister can accept the bid if the favorable bid price is found.
+
+If this process is executed, $i_p(1)$ th bidder will have the right to settle the deal.
+To settle the deal, $i_p(1)$ th bidder have to pay
+
+$$
+  p_{i_p(1)} - d_{i_p(1)}
+$$
+
+If he or she do so, he or she will have the posession of the listed NFT.
+If he or she don't do so, his or her deposit $d_{i_p(1)}$ will be forfeited.
+
 \subsubsection{State transition}
 
 When $(p_{\text{new}}, d_{\text{new}}, r_{\text{new}}, t_{\text{new}})$ will be added to the set of bids, the new bids sequence will be
@@ -77,20 +91,22 @@ where the prime means the next state.
 The constraint of $d_{\text{new}}$ is
 
 $$
-  c p_{\text{new}} \le d_{\text{new}} \le q' - s
+  c p_{\text{new}} \le d_{\text{new}} \le \min \left\{ p_{\text_new}, q' - s \right\} 
 $$
 
 In easy expression, it means
 
 \begin{itemize}
   \item $c p_{\text{new}} \le d_{\text{new}}$
+  \item $d_{\text{new}} \le p_{\text{new}}$
   \item $s' = s + d_{\text{new}} \le q'$
 \end{itemize}
 
-The former inequation means that
+The first inequation means that
 the deposit of the new bid must be greater than or equal to minimum deposit amount,
-that is defined by multiplying $c$, the minimum deposit rate, to $p_{n+1}'$, the bid price .
-The latter inequation means that $s'$, the sum of deposits, must be lower than or equal to $q'$, the average of bid prices.
+that is defined by multiplying $c$, the minimum deposit rate, to $p_{n+1}'$, the bid price.
+The second inequation guarantee that $p_i - d_i \ge 0$.
+The third inequation means that $s'$, the sum of deposits, must be lower than or equal to $q'$, the average of bid prices.
 To increase the deposit amount of the new bid
 to increase the probability of getting the chance of settlement when the liquidation of collateral occurs,
 the new bidder has no way without increasing $p_{\text{new}}$ to increase $q'$.
@@ -133,5 +149,34 @@ $$
   \end{aligned}\right.
 $$
 
+If the sum of the deposit of remaining bids are insufficient to cover the amount to refund, this process won't be executed and the liquidation process will be executed.
+
+Second, if the lister didn't configure the automatic refunding, the liquidation process will be executed.
+
+\subsubsection{Liquidation process}
+
+for $j \in \{1:n\}$:
+
+if $p_{i_d(j)} < s$, continue.
+
+$i_d(j)$ th bidder will have the right of settlement of the deal.
+To settle the deal, $i_d(j)$ th bidder have to pay
+
+$$
+  p_{i_d(j)} - d_{i_d(j)}
+$$
+
+If he or she do so, he or she will have the posession of the listed NFT. break.
+
+If he or she don't do so, his or her deposit $d_{i_d(j)}$ will be forfeited. continue.
+
+Even if all bidders don't exercise the right of settlement of the deal,
+the protocol will totally forfeit 
+
+$$
+  \sum_{j \in \{1:n\}} d_{i_d(j)} = \sum_{i \in I} d_i = s
+$$
+
+So there is no possibility of the protocol getting any losses caused by the liquidation process.
 
 \end{document}
