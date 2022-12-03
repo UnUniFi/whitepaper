@@ -30,9 +30,9 @@
 \begin{itemize}
   \item[$i \in I$] index of bids
   \item[$n = |I|$] number of bids
-  \item[$\{d_i\}_{i \in I}$] the deposit amount of $i$ th bid
-  \item[$\{r_i\}_{i \in I}$] the interest rate of $i$ th bid (not annualized. for the period between the start and expiration date)
-  \item[$\{x_i\}_{i \in I}$] the expiration date of $i$ th bid
+  \item[$\{d_i\}_{i \in I}$] the deposit amounts of $i$ th bid
+  \item[$\{r_i\}_{i \in I}$] the interest rates of $i$ th bid (not annualized. for the period between the start and expiration date)
+  \item[$\{x_i\}_{i \in I}$] the expiration dates of $i$ th bid
   \item[$t$] current time 
   \item[$q$] the average of $p_i$ and the upper bound of $s$
   \item[$s$] the sum of deposits and the amount which lister can borrow with NFT as collateral
@@ -75,16 +75,18 @@ If he or she don't do so, his or her deposit $d_{i_p(1)}$ will be forfeited.
 
 When $(p_{\text{new}}, d_{\text{new}}, r_{\text{new}}, t_{\text{new}})$ will be added to the set of bids, the new bids sequence will be
 
-\begin{itemize}
-  \item $I' = I \cup \{n+1\}$
-  \item $n' = n + 1$
-  \item $\{p_i'\}_{i \in I'} = \{p_i\}_{i \in I} \cup \{p_{\text{new}}\}$
-  \item $\{d_i'\}_{i \in I'} = \{d_i\}_{i \in I} \cup \{d_{\text{new}}\}$
-  \item $\{r_i'\}_{i \in I'} = \{r_i\}_{i \in I} \cup \{r_{\text{new}}\}$
-  \item $\{t_i'\}_{i \in I'} = \{t_i\}_{i \in I} \cup \{t_{\text{new}}\}$
-  \item $q' = \frac{1}{n'} \sum_{i \in I'} p_i'$
-  \item $s' = \sum_{i \in I'} d_i'$
-\end{itemize}
+$$
+\begin{aligned}
+  I' &= I \cup \{n+1\} \\
+  n' &= n + 1 \\
+  \{p_i'\}_{i \in I'} &= \{p_i\}_{i \in I} \cup \{p_{\text{new}}\} \\
+  \{d_i'\}_{i \in I'} &= \{d_i\}_{i \in I} \cup \{d_{\text{new}}\} \\
+  \{r_i'\}_{i \in I'} &= \{r_i\}_{i \in I} \cup \{r_{\text{new}}\} \\
+  \{t_i'\}_{i \in I'} &= \{t_i\}_{i \in I} \cup \{t_{\text{new}}\} \\
+  q' &= \frac{1}{n'} \sum_{i \in I'} p_i' \\
+  s' &= \sum_{i \in I'} d_i'
+\end{aligned}
+$$
 
 where the prime means the next state.
 
@@ -96,11 +98,13 @@ $$
 
 In easy expression, it means
 
-\begin{itemize}
-  \item $c p_{\text{new}} \le d_{\text{new}}$
-  \item $d_{\text{new}} \le p_{\text{new}}$
-  \item $s' = s + d_{\text{new}} \le q'$
-\end{itemize}
+$$
+\begin{aligned}
+  c p_{\text{new}} &\le d_{\text{new}} \\
+  d_{\text{new}} &\le p_{\text{new}} \\
+  s' = s + d_{\text{new}} &\le q'
+\end{aligned}
+$$
 
 The first inequation means that
 the deposit of the new bid must be greater than or equal to minimum deposit amount,
@@ -135,10 +139,12 @@ When the $i_r(j)$ th bid expire, $x_{i_r(j)} = t$, there are two paths to diverg
 First, if the lister configured the automatic refunding when the listing, $a_{i_r(j)}$ the borrowed amount from $i_r(j)$ th bid will be automatically repaid and then
 the lister will automatically borrow the same amount from the deposit whose interest rate is the next lowest.
 
-\begin{align}
+$$
+\begin{aligned}
   a_{i_r(j + k)} &= d_{i_r(j + k)} & \forall k \in \{1 : m-1\} \\
   a_{i_r(j + m)} &= \sum_{l=1}^m \left( d_{i_r(j+l)} - a_{i_r(j+l)} \right) - (1 + r_{i_r(j)}) a_{i_r{j}} &
-\end{align}
+\end{aligned}
+$$
 
 where $m$ is defined as
 
