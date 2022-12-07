@@ -14,7 +14,7 @@
 
 \title{UnUniFi}
 
-\author{KIMURa Yu, SHIMOJIMA Takeru}
+\author{KIMURA Yu, SHIMOJIMA Takeru}
 
 \begin{document}
 \numberwithin{equation}{section}
@@ -31,7 +31,8 @@
   \item[$i \in I$] index of bids
   \item[$n = |I|$] number of bids
   \item[$\{d_i\}_{i \in I}$] the deposit amounts of $i$ th bid
-  \item[$\{r_i\}_{i \in I}$] the interest rates of $i$ th bid (not annualized. for the period between the start and expiration date)
+  \item[$\{r_i\}_{i \in I}$] the interest rates of $i$ th bid. To unannualize this, an expression $\text{unannualize(r; \text{start}, \text{end})}$ will be used.
+  \item[$\{t_i\}_{i \in I}$] the start dates of $i$ th bid
   \item[$\{x_i\}_{i \in I}$] the expiration dates of $i$ th bid
   \item[$t$] current time 
   \item[$q$] the average of $p_i$ and the upper bound of $s$
@@ -68,8 +69,23 @@ $$
   p_{i_p(1)} - d_{i_p(1)}
 $$
 
-If he or she do so, he or she will have the posession of the listed NFT.
-If he or she don't do so, his or her deposit $d_{i_p(1)}$ will be forfeited.
+If $i_p(1)$ th bidder do so, he or she will have the posession of the listed NFT.
+
+The lister will receive
+
+$$
+  p_{i_p(1)} - \sum_{i \in I} \left( d_i + \text{unannualize}(r_i; t_i, t) a_i \right)
+$$
+
+Protocol fees are abbreviated.
+
+Each $i \in I$ th bidders will receive
+
+$$
+  d_i + \text{unannualize}(r_i; t_i, t) a_i
+$$
+
+If $i_p(1)$ th bidder don't do so, his or her deposit $d_{i_p(1)}$ will be forfeited.
 
 \subsubsection{State transition}
 
@@ -141,8 +157,8 @@ the lister will automatically borrow the same amount from the deposit whose inte
 
 $$
 \begin{aligned}
-  a_{i_r(j + k)} &= d_{i_r(j + k)} & \forall k \in \{1 : m-1\} \\
-  a_{i_r(j + m)} &= \sum_{l=1}^m \left( d_{i_r(j+l)} - a_{i_r(j+l)} \right) - (1 + r_{i_r(j)}) a_{i_r{j}} &
+  a_{i_r(l)} &= d_{i_r(l)} & \forall l \in \{1 : m-1\} \\
+  a_{i_r(m)} &= \sum_{l=1}^m \left( d_{i_r(l)} - a_{i_r(l)} \right) - (1 + \text{unannualize}(r_{i_r(j)}; t_{i_r(j)}, x_{i_r(j)})) a_{i_r(j)} &
 \end{aligned}
 $$
 
@@ -151,7 +167,7 @@ where $m$ is defined as
 $$
   m = \left\{\begin{aligned}
     \min && \ m & \in \mathbb{N} \\
-    \text{subject to} && \ (1 + r_{i_r(j)}) a_{i_r{j}} & \le \sum_{l=1}^m {d_{i_r(j+l)} - a_{i_r(j+l)}}
+    \text{subject to} && \ (1 + \text{unannualize}(r_{i_r(j)}; t_{i_r(j)}, x_{i_r(j)})) a_{i_r(j)} & \le \sum_{l=1}^m {d_{i_r(l)} - a_{i_r(l)}}
   \end{aligned}\right.
 $$
 
@@ -184,6 +200,36 @@ $$
 $$
 
 So there is no possibility of the protocol getting any losses caused by the liquidation process.
+
+If $i_d(k)$ th bidder settle the deal,
+
+$$
+  p_{i_d(k)} + \sum_{l=1}^k d_{i_d(l)}
+$$
+
+will be temporally go to the protocol.
+
+If $\sum_{l=k}^n \left(d_{i_d(l)} + \text{unannualize}(r_{i_d(l)}; t_{i_d(l)}, t) a_{i_d(l)} \right) \le p_{i_d(k)} + \sum_{l=1}^k d_{i_d(l)}$
+
+each $i \in \{i_d(l) \mid l \in \{k:n\}\}$ th bidder will receive
+
+$$
+  d_i + \text{unannualize}(r_i, t_i, t) a_i
+$$
+
+and protocol will reveive
+
+$$
+  p_{i_d(k)} + \sum_{l=1}^k d_{i_d(l)} - \sum_{l=k}^n \left(d_{i_d(l)} + \text{unannualize}(r_{i_d(l)}; t_{i_d(l)}, t) a_{i_d(l)} \right)
+$$
+
+else if $\sum_{l=k}^n \left(d_{i_d(l)} + \text{unannualize}(r_{i_d(l)}; t_{i_d(l)}, t) a_{i_d(l)} \right) > p_{i_d(k)} + \sum_{l=1}^k d_{i_d(l)}$
+
+each $i \in \{i_d(l) \mid l \in \{k:n\}\}$ th bidder will receive
+
+$$
+  \frac{d_i + \text{unannualize}(r_i; t_i, t) a_i}{\sum_{l=k}^n \left(d_{i_d(l)} + \text{unannualize}(r_{i_d(l)}; t_{i_d(l)}, t) a_{i_d(l)} \right)} \left( p_{i_d(k)} + \sum_{l=1}^k d_{i_d(l)} \right)
+$$
 
 \section{Interchain Yield Aggregator}
 
