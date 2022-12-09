@@ -35,11 +35,11 @@
   \item[$\{x_i\}_{i \in I}$] the expiration dates of $i$ th bid
   \item[$t$] current time 
   \item[$q$] the average of $p_i$ and the upper bound of $s$
-  \item[$s$] the sum of deposits and the amount which lister can borrow with NFT as collateral
+  \item[$s_d$] the sum of deposits and the amount which lister can borrow with NFT as collateral
   \item[$j \in J_i$] index of borrowing from $i$ th bid deposit 
-  \item[$\{a_{i,j}\}_{i \in I, j \in J_i}$] means the amount of $j$ th borrowing borrowed from $i$ th bid deposit
-  \item[$\{a_i\}_{i \in I}$] means the amount borrowed from $i$ th bid deposit
-  \item[$b$] the sum of $a_i$
+  \item[$\{b_{i,j}\}_{i \in I, j \in J_i}$] means the amount of $j$ th borrowing borrowed from $i$ th bid deposit
+  \item[$\{b_i\}_{i \in I}$] means the amount borrowed from $i$ th bid deposit
+  \item[$s_b$] the sum of $b_i$
   \item[$\{t_{i,j}\}_{i \in I}$] the start dates of $j$ th borrowing from $i$ th bid deposit
   \item[$i_p(j)$] the index of the $j$ th highest price bid
   \item[$i_d(j)$] the index of the $j$ th highest deposit amount bid
@@ -53,15 +53,15 @@ $$
 $$
 
 $$
-  s = \sum_{i \in I} d_i
+  s_d = \sum_{i \in I} d_i
 $$
 
 $$
-  a_i = \sum_{j \in J_i} a_{i,j}
+  b_i = \sum_{j \in J_i} b_{i,j}
 $$
 
 $$
-  b = \sum_{i \in I} a_i
+  s_b = \sum_{i \in I} b_i
 $$
 
 \subsubsection{Acceptance of the bid}
@@ -80,7 +80,7 @@ If $i_p(1)$ th bidder do so, he or she will have the posession of the listed NFT
 The lister will receive
 
 $$
-  p_{i_p(1)} - \sum_{i \in I} \left( d_i + \sum_{j \in J_i} \text{unannualize}(r_i; t_{i,j}, t) a_{i,j} \right)
+  p_{i_p(1)} - \sum_{i \in I} \left( d_i + \sum_{j \in J_i} \text{unannualize}(r_i; t_{i,j}, t) b_{i,j} \right)
 $$
 
 Protocol fees are abbreviated.
@@ -88,7 +88,7 @@ Protocol fees are abbreviated.
 Each $i \in I$ th bidders will receive
 
 $$
-  d_i + \sum_{j \in J_i} \text{unannualize}(r_i; t_{ij}, t) a_{i,j}
+  d_i + \sum_{j \in J_i} \text{unannualize}(r_i; t_{ij}, t) b_{i,j}
 $$
 
 If $i_p(1)$ th bidder don't do so, his or her deposit $d_{i_p(1)}$ will be forfeited.
@@ -104,9 +104,9 @@ $$
   \{p_i'\}_{i \in I'} &= \{p_i\}_{i \in I} \cup \{p_{\text{new}}\} \\
   \{d_i'\}_{i \in I'} &= \{d_i\}_{i \in I} \cup \{d_{\text{new}}\} \\
   \{r_i'\}_{i \in I'} &= \{r_i\}_{i \in I} \cup \{r_{\text{new}}\} \\
-  \{t_i'\}_{i \in I'} &= \{t_i\}_{i \in I} \cup \{t_{\text{new}}\} \\
+  \{x_i'\}_{i \in I'} &= \{x_i\}_{i \in I} \cup \{x_{\text{new}}\} \\
   q' &= \frac{1}{n'} \sum_{i \in I'} p_i' \\
-  s' &= \sum_{i \in I'} d_i'
+  s_d' &= \sum_{i \in I'} d_i'
 \end{aligned}
 $$
 
@@ -115,7 +115,7 @@ where the prime means the next state.
 The constraint of $d_{\text{new}}$ is
 
 $$
-  c p_{\text{new}} \le d_{\text{new}} \le \min \left\{ p_{\text{new}}, q' - s \right\} 
+  c p_{\text{new}} \le d_{\text{new}} \le \min \left\{ p_{\text{new}}, q' - s_d \right\} 
 $$
 
 In easy expression, it means
@@ -124,7 +124,7 @@ $$
 \begin{aligned}
   c p_{\text{new}} &\le d_{\text{new}} \\
   d_{\text{new}} &\le p_{\text{new}} \\
-  s' = s + d_{\text{new}} &\le q'
+  s_d' = s_d + d_{\text{new}} &\le q'
 \end{aligned}
 $$
 
@@ -140,20 +140,20 @@ the new bidder has no way without increasing $p_{\text{new}}$ to increase $q'$.
 When the NFT lister newly borrow assets, $a_i$ must follow the constraint
 
 $$
-  a_i \le d_i
+  b_i \le d_i
 $$
 
 Trivially the follwing inequation will be satisfied
 
 $$
-  b \le s
+  s_b \le s_d
 $$
 
 Deposited amount must be consumed (used for lending resource) in ascending order of interest rates,
 so the following constraint must be satisfied.
 
 $$
-  a_{i_r(j+1)} = 0 \ \text{if} \ a_{i_r(j)} < d_{i_r(j)}
+  b_{i_r(j+1)} = 0 \ \text{if} \ b_{i_r(j)} < d_{i_r(j)}
 $$
 
 When the $i_r(k)$ th bid expire, $x_{i_r(k)} = t$, there are two paths to diverge,
@@ -163,8 +163,8 @@ the lister will automatically borrow the same amount from the deposit whose inte
 
 $$
 \begin{aligned}
-  a_{i_r(l)} &= d_{i_r(l)} & \forall l \in \{1 : m-1\} \\
-  a_{i_r(m)} &= \sum_{l=1}^m \left( d_{i_r(l)} - a_{i_r(l)} \right) - \sum_{j \in J_{i_r(k)}} (1 + \text{unannualize}(r_{i_r(k)}; t_{i_r(k),j}, x_{i_r(k)})) a_{i_r(k),j} &
+  b_{i_r(l)} &= d_{i_r(l)} & \forall l \in \{1 : m-1\} \\
+  b_{i_r(m)} &= \sum_{l=1}^m \left( d_{i_r(l)} - b_{i_r(l)} \right) - \sum_{j \in J_{i_r(k)}} (1 + \text{unannualize}(r_{i_r(k)}; t_{i_r(k),j}, x_{i_r(k)})) b_{i_r(k),j} &
 \end{aligned}
 $$
 
@@ -173,7 +173,7 @@ where $m$ is defined as
 $$
   m = \left\{\begin{aligned}
     \min && \ m & \in \mathbb{N} \\
-    \text{subject to} && \ \sum_{j \in J_{i_r(k)}} (1 + \text{unannualize}(r_{i_r(k)}; t_{i_r(k),j}, x_{i_r(k)})) a_{i_r(k),j} & \le \sum_{l=1}^m {d_{i_r(l)} - a_{i_r(l)}}
+    \text{subject to} && \ \sum_{j \in J_{i_r(k)}} (1 + \text{unannualize}(r_{i_r(k)}; t_{i_r(k),j}, x_{i_r(k)})) b_{i_r(k),j} & \le \sum_{l=1}^m {d_{i_r(l)} - b_{i_r(l)}}
   \end{aligned}\right.
 $$
 
@@ -202,7 +202,7 @@ Even if all bidders don't exercise the right of settlement of the deal,
 the protocol will totally forfeit 
 
 $$
-  \sum_{k \in \{1:n\}} d_{i_d(k)} = \sum_{i \in I} d_i = s
+  \sum_{k \in \{1:n\}} d_{i_d(k)} = \sum_{i \in I} d_i = s_d
 $$
 
 So there is no possibility of the protocol getting any losses caused by the liquidation process.
@@ -215,26 +215,26 @@ $$
 
 will be temporally go to the protocol.
 
-If $\sum_{l=k^*}^n \left(d_{i_d(l)} + \sum_{j \in J_{i_d(l)}} \text{unannualize}(r_{i_d(l)}; t_{i_d(l),j}, t) a_{i_d(l),j} \right) \le p_{i_d(k^*)} + \sum_{l=1}^{k^*} d_{i_d(l)}$
+If $\sum_{l=k^*}^n \left(d_{i_d(l)} + \sum_{j \in J_{i_d(l)}} \text{unannualize}(r_{i_d(l)}; t_{i_d(l),j}, t) b_{i_d(l),j} \right) \le p_{i_d(k^*)} + \sum_{l=1}^{k^*} d_{i_d(l)}$
 
 each $i \in \{i_d(l) \mid l \in \{k:n\}\}$ th bidder will receive
 
 $$
-  d_i + \sum_{j \in J_i} \text{unannualize}(r_i, t_{i,j}, t) a_{i,j}
+  d_i + \sum_{j \in J_i} \text{unannualize}(r_i, t_{i,j}, t) b_{i,j}
 $$
 
 and protocol will reveive
 
 $$
-  p_{i_d(k^*)} + \sum_{l=1}^{k^*} d_{i_d(l)} - \sum_{l=k^*}^n \left(d_{i_d(l)} + \sum_{j \in J_{i_d(l)}} \text{unannualize}(r_{i_d(l)}; t_{i_d(l),j}, t) a_{i_d(l),j} \right)
+  p_{i_d(k^*)} + \sum_{l=1}^{k^*} d_{i_d(l)} - \sum_{l=k^*}^n \left(d_{i_d(l)} + \sum_{j \in J_{i_d(l)}} \text{unannualize}(r_{i_d(l)}; t_{i_d(l),j}, t) b_{i_d(l),j} \right)
 $$
 
-else if $\sum_{l=k^*}^n \left(d_{i_d(l)} + \sum_{j \in J_{i_d(l)}} \text{unannualize}(r_{i_d(l)}; t_{i_d(l),j}, t) a_{i_d(l),j} \right) > p_{i_d(k^*)} + \sum_{l=1}^{k^*} d_{i_d(l)}$
+else if $\sum_{l=k^*}^n \left(d_{i_d(l)} + \sum_{j \in J_{i_d(l)}} \text{unannualize}(r_{i_d(l)}; t_{i_d(l),j}, t) b_{i_d(l),j} \right) > p_{i_d(k^*)} + \sum_{l=1}^{k^*} d_{i_d(l)}$
 
 each $i \in \{i_d(l) \mid l \in \{k^*:n\}\}$ th bidder will receive
 
 $$
-  \frac{d_i + \sum_{j \in J_i} \text{unannualize}(r_i; t_{i,j}, t) a_{i,j}}{\sum_{l=k^*}^n \left(d_{i_d(l)} + \sum_{j \in J_{i_d(l)}} \text{unannualize}(r_{i_d(l)}; t_{i_d(l),j}, t) a_{i_d(l),j} \right)} \left( p_{i_d(k^*)} + \sum_{l=1}^{k^*} d_{i_d(l)} \right)
+  \frac{d_i + \sum_{j \in J_i} \text{unannualize}(r_i; t_{i,j}, t) b_{i,j}}{\sum_{l=k^*}^n \left(d_{i_d(l)} + \sum_{j \in J_{i_d(l)}} \text{unannualize}(r_{i_d(l)}; t_{i_d(l),j}, t) b_{i_d(l),j} \right)} \left( p_{i_d(k^*)} + \sum_{l=1}^{k^*} d_{i_d(l)} \right)
 $$
 
 \section{Interchain Yield Aggregator}
