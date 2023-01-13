@@ -21,7 +21,7 @@
 
 \maketitle
 
-\section{NFTFi}
+\section{NFT collateral lending}
 
 \subsection{Collateral Liquidation Deposit Auction}
 
@@ -238,6 +238,28 @@ $$
 $$
 
 \section{Interchain Yield Aggregator}
+
+\section{Derivatives}
+
+\subsection{Counterpart liquidity pool model}
+
+\begin{itemize}
+  \item[$I$] the set of the index of assets in the pool
+  \item[$\{p_i\}_{i \in I}$] the price of $i$ th asset in the pool, retrieved from oracle
+  \item[$\{l_i\}_{i \in I}$] the amount of the liquidity of $i$ th asset in the pool
+  \item[$\{w_i^*\}_{i \in I}$] the target weight of the liquidity of $i$ th asset in the pool
+  \item[$\{l_i^*\}_{i \in I}$] the target amount of the liquidity of $i$ th asset in the pool
+  \item[$p$] the price of the liquidity provider token
+  \item[$s$] the supply of the liquidity provider token
+\end{itemize}
+
+$$
+  p = \frac{1}{s} \sum_{i \in I} l_i p_i
+$$
+
+$$
+  w_i^* = \frac{l_i^* p_i}{s p} \iff l_i^* = \frac{w_i^* s p}{p_i}
+$$
 
 \section{Ecosystem Incentive}
 
