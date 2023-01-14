@@ -241,7 +241,7 @@ $$
 
 \section{Derivatives}
 
-\subsection{Counterpart liquidity pool model}
+\subsection{Counterpart Liquidity Pool}
 
 \begin{itemize}
   \item[$I$] the set of the index of assets in the pool
@@ -254,12 +254,30 @@ $$
 \end{itemize}
 
 $$
-  p = \frac{1}{s} \sum_{i \in I} l_i p_i
+  p = \left\{
+    \begin{aligned}
+      \frac{1}{s} \sum_{i \in I} l_i p_i & \ \text{if} \ s > 0 \\
+      \sum_{i \in I} w_i^* p_i & \ \text{if} \ s = 0
+    \end{aligned}
+  \right.
 $$
 
 $$
   w_i^* = \frac{l_i^* p_i}{s p} \iff l_i^* = \frac{w_i^* s p}{p_i}
 $$
+
+\subsubsection{Imaginary funding rate}
+
+In Central Limit Order Book (CLOB) model, index prices will be retrieved via oracles and mark prices will be determined in CLOB.
+Funding rates plays a role of making the difference between the mark price and the index price close to zero.
+
+On the other hand, in Counterpart Liquidity Pool model, mark prices are equivalent to index prices. Both of them are retrieved via oracles.
+Counterpart Liquidity Pool will take the counterpart position of a trader's order, so there is no time to wait for matchmaking.
+However, in this model, if traders get profits, the pool and at the same time liquidity providers get losses.
+To tackle this problem, imaginary funding rate exists.
+If the net position of traders lean to one side, the imaginary funding rate work to make the net position of traders neutral.
+The neutral net position of traders means the neutral position of the pool an at the same time liquidity providers.
+In the perspective of economics, it can be expressed that this model unifies the conventional funding rate and the time cost of waiting for matchmaking to the imaginary funding rate.
 
 \section{Ecosystem Incentive}
 
