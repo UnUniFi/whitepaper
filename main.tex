@@ -256,7 +256,8 @@ $$
   \item[$\Delta$] the set of derivatives 
   \item[$\Pi_\delta$] the set of positions of a derivative $\delta \in \Delta$
   \item[$\chi(\pi)$] the counterpart position of the position $\pi$
-  \item[$r(\pi)$] the imaginary funding rate 
+  \item[$r(\pi)$] the imaginary funding rate of the position $\pi$
+  \item[$s(\pi)$] the total size of the position $\pi$
 \end{itemize}
 
 $l_i^*$ can be calculated with the given values $w_i^*, s, p, \{p_i\}_{i=1}^n$ by $w_i^* = \frac{l_i^* p_i}{s p}$ as
@@ -298,10 +299,10 @@ $\text{PF} \in \Delta$ serves perpetual futures.
 Positions are
 
 $$
-  \Pi_{\text{PF}} = \{\text{long}(i), \text{short}(i)\}
+  \Pi_{\text{PF}} = \{\text{long}(i, p), \text{short}(i, p)\}
 $$
 
-where $i$ is the index of assets.
+where $i$ is the index of assets and $p$ is the position price.
 
 The relations of counterpart position are
 
@@ -311,6 +312,12 @@ $$
   \chi(\text{short}(i)) & = \text{long}(i)
 \end{aligned}
 $$
+
+$$
+  \forall p \in \mathbb{R}_+, \ r(\text{long}(i, p)) \propto \int_{\mathbb{R}_+} (s(\text{long}(i, q)) - s(\text{short}(i, q))) dq
+$$
+
+Notice that $r(\pi) = -r(\chi(\pi))$.
 
 \subsubsection{Perpetual options}
 
