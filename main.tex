@@ -243,6 +243,8 @@ $$
 
 \subsection{Counterpart Liquidity Pool}
 
+\subsubsection{Definitions}
+
 \begin{itemize}
   \item[$I$] the set of the index of assets in the pool
   \item[$\{p_i\}_{i \in I}$] the price of $i$ th asset in the pool, retrieved from oracle
@@ -251,7 +253,19 @@ $$
   \item[$\{l_i^*\}_{i \in I}$] the target amount of the liquidity of $i$ th asset in the pool
   \item[$p$] the price of the liquidity provider token
   \item[$s$] the supply of the liquidity provider token
+  \item[$\Delta$] the set of derivatives 
+  \item[$\Pi_\delta$] the set of positions of a derivative $\delta \in \Delta$
+  \item[$\chi(\pi)$] the counterpart position of the position $\pi$
+  \item[$r(\pi)$] the imaginary funding rate 
 \end{itemize}
+
+$l_i^*$ can be calculated with the given values $w_i^*, s, p, \{p_i\}_{i=1}^n$ by $w_i^* = \frac{l_i^* p_i}{s p}$ as
+
+$$
+  l_i^* = \frac{w_i^* s p}{p_i}
+$$
+
+The price of the liquidity provider token can be calculated as:
 
 $$
   p = \left\{
@@ -262,9 +276,7 @@ $$
   \right.
 $$
 
-$$
-  w_i^* = \frac{l_i^* p_i}{s p} \iff l_i^* = \frac{w_i^* s p}{p_i}
-$$
+The minting and redemption of the liquidity provider token is executed with this price $p$.
 
 \subsubsection{Imaginary funding rate}
 
@@ -278,6 +290,50 @@ To tackle this problem, imaginary funding rate exists.
 If the net position of traders lean to one side, the imaginary funding rate work to make the net position of traders neutral.
 The neutral net position of traders means the neutral position of the pool an at the same time liquidity providers.
 In the perspective of economics, it can be expressed that this model unifies the conventional funding rate and the time cost of waiting for matchmaking to the imaginary funding rate.
+
+\subsubsection{Perpetual futures}
+
+$\text{PF} \in \Delta$ serves perpetual futures.
+
+Positions are
+
+$$
+  \Pi_{\text{PF}} = \{\text{long}(i), \text{short}(i)\}
+$$
+
+where $i$ is the index of assets.
+
+The relations of counterpart position are
+
+$$
+\begin{aligned}
+  \chi(\text{long}(i)) & = \text{short}(i) \\
+  \chi(\text{short}(i)) & = \text{long}(i)
+\end{aligned}
+$$
+
+\subsubsection{Perpetual options}
+
+$\text{PO} \in \Delta$ serves perpetual options.
+
+Positions are
+
+$$
+  \Pi_{\text{PO}} = \{\text{long\_call}(i, p), \text{long\_put}(i, p), \text{short\_call}(i, p), \text{short\_put}(i, p)\}
+$$
+
+where $i$ is the index of assets and $p$ is the strike price.
+
+The relations of counterpart position are
+
+$$
+\begin{aligned}
+  \chi(\text{long\_call}(i, p)) & = \text{short\_call}(i, p) \\
+  \chi(\text{short\_call}(i, p)) & = \text{long\_call}(i, p) \\
+  \chi(\text{long\_put}(i, p)) & = \text{short\_put}(i, p) \\
+  \chi(\text{short\_put}(i, p)) & = \text{long\_put}(i, p)
+\end{aligned}
+$$
 
 \section{Ecosystem Incentive}
 
