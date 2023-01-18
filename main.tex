@@ -326,7 +326,7 @@ $\text{PO} \in \Delta$ serves perpetual options.
 Positions are
 
 $$
-  \Pi_{\text{PO}} = \{\text{long\_call}(i, p), \text{long\_put}(i, p), \text{short\_call}(i, p), \text{short\_put}(i, p)\}
+  \Pi_{\text{PO}} = \{\text{call\_long}(i, p), \text{call\_short}(i, p), \text{put\_long}(i, p), \text{put\_short}(i, p)\}
 $$
 
 where $i$ is the index of assets and $p$ is the strike price.
@@ -335,10 +335,10 @@ The relations of counterpart position are
 
 $$
 \begin{aligned}
-  \chi(\text{long\_call}(i, p)) & = \text{short\_call}(i, p) \\
-  \chi(\text{short\_call}(i, p)) & = \text{long\_call}(i, p) \\
-  \chi(\text{long\_put}(i, p)) & = \text{short\_put}(i, p) \\
-  \chi(\text{short\_put}(i, p)) & = \text{long\_put}(i, p)
+  \chi(\text{call\_long}(i, p)) & = \text{call\_short}(i, p) \\
+  \chi(\text{call\_short}(i, p)) & = \text{call\_long}(i, p) \\
+  \chi(\text{put\_long}(i, p)) & = \text{put\_short}(i, p) \\
+  \chi(\text{put\_short}(i, p)) & = \text{put\_long}(i, p)
 \end{aligned}
 $$
 
