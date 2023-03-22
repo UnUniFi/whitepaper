@@ -32,10 +32,10 @@
     "editor.detectIndentation": false,
     "editor.formatOnSave": false,
     "[tex]": {
-      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      "editor.suggest.snippetsPreventQuickSuggestions": false
     },
     "[latex]": {
-      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      "editor.suggest.snippetsPreventQuickSuggestions": false
     },
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.latex.clean.fileTypes": [
@@ -70,7 +70,7 @@
         "tools": [
           "latexmk"
         ]
-      },
+      }
     ],
     "latex-workshop.latex.tools": [
       {
@@ -80,8 +80,8 @@
           "-silent",
           "-outdir=%OUTDIR%",
           "%DOC%"
-        ],
-      },
-    ],
+        ]
+      }
+    ]
   }
 }
