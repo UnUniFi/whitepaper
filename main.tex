@@ -23,11 +23,11 @@
 \maketitle
 
 \begin{abstract}
-  UnUniFi Protocol is an NFT-Fi Platform with DeFi tools, built via Layer1 app-specific blockchain (ASBC) in the Cosmos Network. 
-  UnUniFi provides the tools and features necessary to integrate DeFi functionality into NFT ecosystems, with cross-chain products developed for both retail and institutional users. 
-  This includes the first NFTFi Platform to create a proprietary NFT valuation algorithm calculated using real demand data, while allowing users to generate automatic DeFi yield on borrowed assets through an interchain yield aggregator. 
+  UnUniFi Protocol is an NFT-Fi Platform with DeFi tools, built via Layer1 app-speciﬁc blockchain (ASBC) in the Cosmos Network. 
+  UnUniFi provides the tools and features necessary to integrate peer-to-peer DeFi functionality into NFT ecosystems, with an internal NFT marketplace and cross-chain products developed for both retail and institutional users. 
+  This includes the ﬁrst NFTFi Platform to create a proprietary NFT valuation algorithm calculated using real demand data, while allowing users to engage in DeFi activities to generate earnings or rewards from a variety of lending/borrowing/financing activities and third party protocols relating to NFTs, through an interchain yield aggregator. 
   UnUniFi provides the infrastructure to be the NFT-Fi Hub for Cosmos and beyond. 
-  Our mission is to “Give all NFTs the opportunity to DeFi”.
+  Our mission is to "Give all NFTs the opportunity to DeFi".
 \end{abstract}
 
 \section{Introduction}
@@ -41,11 +41,11 @@ Current pricing models generally fail to consider value changes based on rare NF
 Additionally, many current NFTFi solutions are limited in scope, cost-prohibitive, and often create unfavorable lending terms for both platform users and platform lenders.
 
 \subsection{The rise of NFT + Decentralized Finance (DeFi)}
-DeFi is short for “Decentralized Finance”, a generalized umbrella term used to describe a variety of cryptocurrency and blockchain-based financial applications geared towards disrupting legacy financial institutions. 
-DeFi is not reliant on central financial intermediaries such as brokerages, exchanges, or banks to offer users access to traditional financial instruments, and instead utilizes smart contract-based applications that are built on top of existing blockchain-based platforms. 
-In regard to DeFi, there is a growing movement to make finance more efficient with use-cases not only limited to exchanging tokens, but also realizing existing financial products (such as corporate stocks) on the blockchain.
-NFT-Fi (NFT×DeFi) technology seeks to provide DeFi utility to NFTs, increasing tradability and capital efficiency to establish legitimacy for NFTs, regarding them as a true asset class or store of value. 
-“NFTs are undoubtedly becoming a gateway into the DeFi space for mainstream audiences,” said Lauren Stephanian, a principal at Pantera Capital. 
+DeFi is short for “Decentralized Finance”, a generalized umbrella term used to describe a variety of peer-to-peer cryptocurrency and blockchain-based financial applications geared towards disrupting legacy financial institutions. 
+DeFi is not reliant on central financial intermediaries such as brokerages, exchanges, or banks to officer users access to traditional financial instruments, and instead utilizes smart contract-based applications that are built on top of existing blockchain-based platforms. 
+In regard to DeFi, there is a growing movement to make peer-to-peer finance more efficient with use-cases not only limited to exchanging tokens, but also realizing existing financial products (such as corporate stocks) on the blockchain.
+NFT-Fi (NFT × DeFi) technology seeks to provide DeFi utility to NFTs, increasing tradability and capital efficiency to establish legitimacy for NFTs, regarding them as a true asset class or store of value. 
+“NFTs are undoubtedly becoming a gateway into the DeFi space for mainstream audiences” said Lauren Stephanian, a principal at Pantera Capital.
 
 \subsection{Our advantage over other NFTFi solutions}
 As a technology in its early adoption phase, NFT-Fi needs to be easily accessible, easy to understand, flexible, and scalable to encourage continued adoption. 
@@ -272,26 +272,25 @@ $$
 
 \section{Interchain Yield Aggregator}
 
-Describing Auto DeFi Yield with our “Interchain Yield Aggregator”
-Easily utilize assets for yield farming through an Interchain Yield Aggregator directly integrated into UnUniFi Protocol. 
+Describing Auto DeFi Yield with our “Interchain Yield Aggregator”. Easily utilize assets for yield farming via participation in third party protocols through an Interchain Yield Aggregator directly integrated into UnUniFi Protocol. 
 Yield Farming strategy availability can be extended by deploying an adapter made with CosmWasm via third party communities. 
-Interchain support ensures a variety of high yield strategies are made available to platform users at their selection. 
+Interchain support ensures a variety of high yield strategies (where token rewards may be earned via engaging with third party protocols) are made available to platform users at their selection. 
 Borrowers can leverage their NFT assets for yield farming by using borrowed funds. 
-Liquidity providers can also experience the same benefits by receiving yield on any assets deposited. 
-Auto DeFi Yield ensures capital efficiency, so that tokenized assets deposited into our protocol maintain competitive returns, even when not actively being used in the platform.
+Liquidity providers can also experience the same benefits by receiving rewards on any assets deposited. 
+Auto DeFi Yield ensures capital efficiency, so that tokenized assets deposited into our protocol are able to participate competitively, even when not actively being used in the platform.
 
 \subsection{The flow of Interchain Yield Aggregator}
 \begin{enumerate}
   \item Deposit tokens into the IYA module for UnUniFi Protocol.
   \item Specify a strategy based on the information provided by the data provider and select contract.
-  \item Start investing by sending TX from the contract to the other chain through an interchain account.
+  \item Initiate participation by sending TX from the contract to the other chain through an interchain account.
 \end{enumerate}
 
 \subsection{The process of receiving rewards}
 \begin{enumerate}
-  \item Users claim rewards in the Interchain Yiled Aggregator module for UnUniFi Protocol.
+  \item Users claim rewards in the Interchain Yield Aggregator module for UnUniFi Protocol.
   \item The Interchain Yield Aggregator receives rewards on the contract the user selected.
-  \item The contract receives from the chain in which has invested.
+  \item The contract receives from the chain from which the user had initiated the participation
   \item The contract sends rewards from the other chain to UnUniFi Protocol.
   \item Interchain Yield Aggregator sends tokens to the user.
 \end{enumerate}
@@ -339,15 +338,15 @@ The minting and redemption of the liquidity provider token is executed with this
 \subsubsection{Imaginary funding rate}
 
 In a Central Limit Order Book (CLOB) model, index prices are retrieved via oracles and mark prices are determined in the CLOB. 
-Funding rates ensure the diﬀerence between the mark price and the index price is close to zero.
+Funding rates ensure the differences between the mark price and the index price is close to zero.
 
 On the other hand, in the Counterpart Liquidity Pool model, mark prices are equivalent to index prices, and both are retrieved via oracles. 
 The Counterpart Liquidity Pool will take the counterpart position of a trader’s order, so there is no time required for matchmaking. 
-However, in this model, if traders acquire proﬁts, the pool and liquidity providers simultaneously incur losses. 
+However, in this model, if traders acquire profits, the pool and liquidity providers simultaneously incur losses. 
 To tackle this problem, an imaginary funding rate exists. 
 If the net position of traders leans to one side, the imaginary funding rate works to make the net position of traders neutral.  
 The neutral net position of traders means a neutral position for both the pool and the liquidity providers. 
-In the perspective of economics, it can be expressed that this model uniﬁes the conventional funding rate and the time cost of waiting for matchmaking to the imaginary funding rate.
+In the perspective of economics, it can be expressed that this model unifies the conventional funding rate and the time cost of waiting for matchmaking to the imaginary funding rate.
 
 \subsubsection{Perpetual futures}
 
@@ -437,16 +436,34 @@ Some of the various applications for custom Frontends can include NFT markets fo
 These unique Frontend service creators can then become candidates to receive the Ecosystem Incentive Reward, generated from the various fees accumulated.
 
 \section{GUU token distribution}
+The native cryptographically-secure fungible protocol token of the UnUniFi Protocol (ticker symbol GUU) is a transferable representation of attributed governance and utility functions specified in the protocol/code of the UnUniFi Protocol, and which is designed to be used solely as an interoperable utility token thereon.
+GUU is a functional multi-utility token which will be used as the medium of exchange between participants on the UnUniFi Protocol in a decentralised manner. 
+The goal of introducing GUU is to provide a convenient and secure mode of payment and settlement between participants who interact within the ecosystem on the UnUniFi Protocol without any intermediaries such as centralised third party entity/institution/credit. 
+It is not, and not intended to be, a medium of exchange accepted by the public (or a section of the public) as payment for goods or services or for the discharge of a debt; nor is it designed or intended to be used by any person as payment for any goods or services whatsoever that are not exclusively provided by the issuer. 
+GUU does not in any way represent any shareholding, ownership, participation, right, title, or interest in the Company, the Distributor, their respective affiliates, or any other company, enterprise or undertaking, nor will GUU entitle token holders to any promise of fees, dividends, revenue, profits or investment returns, and are not intended to constitute securities in Panama, Singapore or any relevant jurisdiction. 
+GUU may only be utilised on the UnUniFi Protocol, and ownership of the same carries no rights, express or implied, other than the right to use GUU as a means to enable usage of and interaction within the UnUniFi Protocol. 
+The secondary market pricing of GUU is not dependent on the effort of the UnUniFi Project Contributors, and there is no token functionality or scheme designed to control or manipulate such secondary pricing.
+Further, GUU provides the economic incentives which will be distributed to encourage users to exert efforts towards contribution and participation in the ecosystem on the UnUniFi Protocol, thereby creating a mutually beneficial system where every participant is fairly compensated for its efforts. 
+GUU is an integral and indispensable part of the UnUniFi Protocol, because without GUU, there would be no incentive for users to expend resources to participate in activities or provide services for the benefit of the entire ecosystem on the UnUniFi Protocol. 
+Given that additional GUU will be awarded to a user based only on its actual usage, activity and efforts made on the UnUniFi Protocol and/or proportionate to the frequency and volume of transactions, users of the UnUniFi Protocol and/or holders of GUU which did not actively participate will not receive any GUU incentives.
+The UnUniFi Protocol itself is simply a blockchain protocol which, as designed, does not own or run any computing/storage servers. 
+It relies on an open, decentralised network of validator nodes which operate on an open source algorithm to verify, process and share pricing information and platform transactions. 
+Accordingly, third-party computing/bandwidth/storage resources are required for maintaining the network and providers of these services / resources would be paid for the consumption of resources to maintain network integrity (i.e. "mining" on the UnUniFi Protocol), and GUU will be used as the native currency to quantify and pay the costs of the consumed resources.
+As an indication of commitment to the system (to filter genuine transactions and minimise network chatter) and to encourage higher performance and availability, validators would be required to place an amount of GUU as security deposit before it may participate in network maintenance/support. 
+Conversely, GUU is also used as a deterrent for penalising validators or providers for various offences (e.g. erroneous data or other malicious acts) - penalties include reduction of reputation rating, deducting incentives, deducting the stake (or part thereof) or temporarily or permanently expelling the validator / provider from the pool.
+It is anticipated that the community of GUU holders would comprise a diverse field of developers, professionals and supporters of the project to develop the UnUniFi Protocol (including without limitation experts in software development, blockchain technology, cryptography, artificial intelligence, law or finance), which will be able to share and exchange balanced views on the overall direction of the project. 
+To promote decentralised community governance for the network, GUU would allow holders to propose and vote on governance proposals to determine future features, upgrades and/or parameters of the UnUniFi Protocol, or provide feedback, with voting weight calculated in proportion to the tokens staked. 
+The right to vote is restricted solely to voting on features of the UnUniFi Protocol; it does not entitle GUU holders to vote on the operation and management of the Company, its affiliates, or their assets or the disposition of such assets to token holders, or select the board of directors or similar bodies of these entities, or determine the development direction of these entities, nor does GUU constitute any equity interest in any of these entities or any collective investment scheme; the arrangement is not intended to be any form of joint venture or partnership. 
 \clearpage
 \begin{table}[htb]
   \begin{tabular}{|l||l|l|}  \hline
-    Usage  & supply[\%]  & Vesting \\ \hline
+    Usage  & Supply[\%]  & Vesting \\ \hline
     Ecosystem Development & 30\% & 
     \begin{tabular}{l}
       Vesting term depending on the situation. \\ Minimum 1-yr linear vesting
     \end{tabular}\\ \hline
     Assignment for validators & 15\% & 1-yr full locked, linear 12 months \\ \hline
-    Assignment for UnUniFi team & 15\% &
+    Assignment for UnUniFi Project Contributors & 15\% &
     \begin{tabular}{l}
       1-yr full locked, linear 36 months \\ 1-yr full locked, linear 60 months
       \end{tabular}\\ \hline
@@ -454,7 +471,7 @@ These unique Frontend service creators can then become candidates to receive the
     \begin{tabular}{l}
       1-yr full locked, linear 36 months \\ 1-yr full locked, linear 60 months
       \end{tabular}\\ \hline
-    Marketing  & 14\% & VC(1-yr full locked, linear 36 months) \\ \hline
+    Marketing  & 14\% & Early purchases(1-yr full locked, linear 36 months) \\ \hline
     Treasury  & 10\% &
     \begin{tabular}{l}
       Vesting term depending on the situation. \\ Minimum 1-yr linear vesting
@@ -492,11 +509,38 @@ These unique Frontend service creators can then become candidates to receive the
 
 
 \section{About Us}
-The UnUniFi Protocol is owned by the team which is a leading technologist company of Cosmos blockchain technologies. 
+The UnUniFi Protocol is owned by the UnUniFi Project Contributors which is a leading technologist company of Cosmos blockchain technologies.
 
 \section{Legal Disclaimer}
-Please be aware of and accept the following risks before using GUU. 
-CAUCHYE ASIA PTE. LTD. shall not be liable for any loss or damage arising out of or in connection with any of the following risks.
+PLEASE READ THE ENTIRETY OF THIS "LEGAL DISCLAIMER" SECTION CAREFULLY. NOTHING HEREIN CONSTITUTES LEGAL, FINANCIAL, BUSINESS OR TAX ADVICE AND YOU ARE STRONGLY ADVISED TO CONSULT YOUR OWN LEGAL, FINANCIAL, TAX OR OTHER PROFESSIONAL ADVISOR(S) BEFORE ENGAGING IN ANY ACTIVITY IN CONNECTION HEREWITH. NEITHER UNUNIFI S.A. (THE COMPANY), ANY OF THE PROJECT CONTRIBUTORS (THE UNUNIFI PROJECT CONTRIBUTORS) WHO HAVE WORKED ON THE UNUNIFI PROTOCOL (AS DEFINED HEREIN) OR PROJECT TO DEVELOP THE UNUNIFI PROTOCOL IN ANY WAY WHATSOEVER, ANY DISTRIBUTOR AND/OR VENDOR OF GUU TOKENS (OR SUCH OTHER RE-NAMED OR SUCCESSOR TICKER CODE OR NAME OF SUCH TOKENS) (THE DISTRIBUTOR), NOR ANY SERVICE PROVIDER SHALL BE LIABLE FOR ANY KIND OF DIRECT OR INDIRECT DAMAGE OR LOSS WHATSOEVER WHICH YOU MAY SUFFER IN CONNECTION WITH ACCESSING THE PAPER, DECK OR MATERIAL RELATING TO GUU (THE TOKEN DOCUMENTATION) AVAILABLE ON THE WEBSITE AT HTTPS://UNUNIFI.IO/ (THE WEBSITE, INCLUDING ANY SUB-DOMAINS THEREON) OR ANY OTHER WEBSITES OR MATERIALS PUBLISHED OR COMMUNICATED BY THE COMPANY OR ITS REPRESENTATIVES FROM TIME TO TIME.\\
+Project purpose: You agree that you are acquiring GUU to participate in the UnUniFi Protocol and to obtain services on the ecosystem thereon. The Company, the Distributor and their respective affiliates would develop and contribute to the underlying source code for the UnUniFi Protocol. The Company is acting solely as an arms’ length third party in relation to the GUU distribution, and not in the capacity as a financial advisor or fiduciary of any person with regard to the distribution of GUU.\\
+Nature of the Token Documentation: The Token Documentation is a conceptual paper that articulates some of the main design principles and ideas for the creation of a digital token to be known as GUU. The Token Documentation and the Website are intended for general informational purposes only and do not constitute a prospectus, an offer document, an offer of securities, a solicitation for investment, any offer to sell any product, item, or asset (whether digital or otherwise), or any offer to engage in business with any external individual or entity provided in said documentation. The information herein may not be exhaustive and does not imply any element of, or solicit in any way, a legally-binding or contractual relationship. There is no assurance as to the accuracy or completeness of such information and no representation, warranty or undertaking is or purported to be provided as to the accuracy or completeness of such information. Where the Token Documentation or the Website includes information that has been obtained from third party sources, the Company, the Distributor, their respective affiliates and/or the UnUniFi Project Contributors have not independently verified the accuracy or completeness of such information. Further, you acknowledge that the project development roadmap, platform/network functionality are subject to change and that the Token Documentation or the Website may become outdated as a result; and neither the Company nor the Distributor is under any obligation to update or correct this document in connection therewith.\\
+Validity of Token Documentation and Website: Nothing in the Token Documentation or the Website constitutes any offer by the Company, the Distributor, or the UnUniFi Project Contributors to sell any GUU (as defined herein) nor shall it or any part of it nor the fact of its presentation form the basis of, or be relied upon in connection with, any contract or investment decision. Nothing contained in the Token Documentation or the Website is or may be relied upon as a promise, representation or undertaking as to the future performance of the UnUniFi Protocol. The agreement between the Distributor (or any third party) and you, in relation to any distribution or transfer of GUU, is to be governed only by the separate terms and conditions of such agreement.\\
+The information set out in the Token Documentation and the Website is for community discussion only and is not legally binding. No person is bound to enter into any contract or binding legal commitment in relation to the acquisition of GUU, and no digital asset or other form of payment is to be accepted on the basis of the Token Documentation or the Website. The agreement for distribution of GUU and/or continued holding of GUU shall be governed by a separate set of Terms and Conditions or Token Distribution Agreement (as the case may be) setting out the terms of such distribution and/or continued holding of GUU (the Terms and Conditions), which shall be separately provided to you or made available on the Website. The Terms and Conditions must be read together with the Token Documentation. In the event of any inconsistencies between the Terms and Conditions and the Token Documentation or the Website, the Terms and Conditions shall prevail.\\
+Deemed Representations and Warranties: By accessing the Token Documentation or the Website (or any part thereof), you shall be deemed to represent and warrant to the Company, the Distributor, their respective affiliates, and the UnUniFi Project Contributors as follows:\\
+(a)	in any decision to acquire any GUU, you have not relied and shall not rely on any statement set out in the Token Documentation or the Website;\\
+(b)	you shall at your own expense ensure compliance with all laws, regulatory requirements and restrictions applicable to you (as the case may be);\\
+(c)	you acknowledge, understand and agree that GUU may have no value, there is no guarantee or representation of value or liquidity for GUU, and GUU is not an investment product nor is it intended for any speculative investment whatsoever;\\
+(d)	none of the Company, the Distributor, their respective affiliates, and/or the UnUniFi Project Contributors shall be responsible for or liable for the value of GUU, the transferability and/or liquidity of GUU and/or the availability of any market for GUU through third parties or otherwise; and\\
+(e)	you acknowledge, understand and agree that you are not eligible to participate in the distribution of GUU if you are a citizen, national, resident (tax or otherwise), domiciliary and/or green card or permanent visa holder of a geographic area or country (i) where it is likely that the distribution of GUU would be construed as the sale of a security (howsoever named), financial service or investment product and/or (ii) where participation in token distributions is prohibited by applicable law, decree, regulation, treaty, or administrative act (including without limitation the United States of America, Canada, and the People's Republic of China); and to this effect you agree to provide all such identity verification document when requested in order for the relevant checks to be carried out.\\
+The Company, the Distributor and the UnUniFi Project Contributors do not and do not purport to make, and hereby disclaims, all representations, warranties or undertaking to any entity or person (including without limitation warranties as to the accuracy, completeness, timeliness, or reliability of the contents of the Token Documentation or the Website, or any other materials published by the Company or the Distributor). To the maximum extent permitted by law, the Company, the Distributor, their respective affiliates and service providers shall not be liable for any indirect, special, incidental, consequential or other losses of any kind, in tort, contract or otherwise (including, without limitation, any liability arising from default or negligence on the part of any of them, or any loss of revenue, income or profits, and loss of use or data) arising from the use of the Token Documentation or the Website, or any other materials published, or its contents (including without limitation any errors or omissions) or otherwise arising in connection with the same. Prospective acquirors of GUU should carefully consider and evaluate all risks and uncertainties (including financial and legal risks and uncertainties) associated with the distribution of GUU, the Company, the Distributor and the UnUniFi Project Contributors.\\
+GUU Token: GUU are designed to be utilised, and that is the goal of the GUU distribution. In particular, it is highlighted that GUU:\\
+(a)	does not have any tangible or physical manifestation, and does not have any intrinsic value (nor does any person make any representation or give any commitment as to its value);\\
+(b)	is non-refundable and cannot be exchanged for cash (or its equivalent value in any other digital asset) or any payment obligation by the Company, the Distributor or any of their respective affiliates;\\
+(c)	does not represent or confer on the token holder any right of any form with respect to the Company, the Distributor (or any of their respective affiliates), or their revenues or assets, including without limitation any right to receive future dividends, revenue, shares, ownership right or stake, share or security, any voting, distribution, redemption, liquidation, proprietary (including all forms of intellectual property or licence rights), right to receive accounts, financial statements or other financial data, the right to requisition or participate in shareholder meetings, the right to nominate a director, or other financial or legal rights or equivalent rights, or intellectual property rights or any other form of participation in or relating to the UnUniFi Protocol, the Company, the Distributor and/or their service providers;\\
+(d)	is not intended to represent any rights under a contract for differences or under any other contract the purpose or intended purpose of which is to secure a profit or avoid a loss;\\
+(e)	is not intended to be a representation of money (including electronic money), payment instrument, security, commodity, bond, debt instrument, unit in a collective investment or managed investment scheme or any other kind of financial instrument or investment;\\
+(f)	is not a loan to the Company, the Distributor or any of their respective affiliates, is not intended to represent a debt owed by the Company, the Distributor or any of their respective affiliates, and there is no expectation of profit nor interest payment; and\\
+(g)	does not provide the token holder with any ownership or other interest in the Company, the Distributor or any of their respective affiliates.\\
+Notwithstanding the GUU distribution, users have no economic or legal right over or beneficial interest in the assets of the Company, the Distributor, or any of their affiliates after the token distribution.\\
+To the extent a secondary market or exchange for trading GUU does develop, it would be run and operated wholly independently of the Company, the Distributor, the distribution of GUU and the UnUniFi Protocol. Neither the Company nor the Distributor will create such secondary markets nor will either entity act as an exchange for GUU.\\
+Informational purposes only: The information set out herein is only conceptual, and describes the future development goals for the UnUniFi Protocol to be developed. In particular, the project roadmap in the Token Documentation is being shared in order to outline some of the plans of the UnUniFi Project Contributors, and is provided solely for INFORMATIONAL PURPOSES and does not constitute any binding commitment. Please do not rely on this information in deciding whether to participate in the token distribution because ultimately, the development, release, and timing of any products, features or functionality remains at the sole discretion of the Company, the Distributor or their respective affiliates, and is subject to change. Further, the Token Documentation or the Website may be amended or replaced from time to time. There are no obligations to update the Token Documentation or the Website, or to provide recipients with access to any information beyond what is provided herein.\\
+Regulatory approval: No regulatory authority has examined or approved, whether formally or informally, any of the information set out in the Token Documentation or the Website. No such action or assurance has been or will be taken under the laws, regulatory requirements or rules of any jurisdiction. The publication, distribution or dissemination of the Token Documentation or the Website does not imply that the applicable laws, regulatory requirements or rules have been complied with.\\
+Cautionary Note on forward-looking statements: All statements contained herein, statements made in press releases or in any place accessible by the public and oral statements that may be made by the Company, the Distributor and/or the UnUniFi Project Contributors, may constitute forward-looking statements (including statements regarding the intent, belief or current expectations with respect to market conditions, business strategy and plans, financial condition, specific provisions and risk management practices). You are cautioned not to place undue reliance on these forward-looking statements given that these statements involve known and unknown risks, uncertainties and other factors that may cause the actual future results to be materially different from that described by such forward-looking statements, and no independent third party has reviewed the reasonableness of any such statements or assumptions. These forward-looking statements are applicable only as of the date indicated in the Token Documentation, and the Company, the Distributor as well as the UnUniFi Project Contributors expressly disclaim any responsibility (whether express or implied) to release any revisions to these forward-looking statements to reflect events after such date.\\
+References to companies and platforms: The use of any company and/or platform names or trademarks herein (save for those which relate to the Company, the Distributor or their respective affiliates) does not imply any affiliation with, or endorsement by, any third party. References in the Token Documentation or the Website to specific companies and platforms are for illustrative purposes only.\\
+English language: The Token Documentation and the Website may be translated into a language other than English for reference purpose only and in the event of conflict or ambiguity between the English language version and translated versions of the Token Documentation or the Website, the English language versions shall prevail. You acknowledge that you have read and understood the English language version of the Token Documentation and the Website.\\
+No Distribution: No part of the Token Documentation or the Website is to be copied, reproduced, distributed or disseminated in any way without the prior written consent of the Company or the Distributor. By attending any presentation on this Token Documentation or by accepting any hard or soft copy of the Token Documentation, you agree to be bound by the foregoing limitations.\\
+
 
 \subsection{Risk of Losing GUU due to Loss of Private Key}
 The private key itself or a combination of private key shall be necessary for the disposal of the User's GUU, and the management of the private key shall be managed under the User's own authority and responsibility. 
