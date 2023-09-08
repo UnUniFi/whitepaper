@@ -23,35 +23,70 @@
 \maketitle
 
 \begin{abstract}
-  UnUniFi Protocol is an NFT-Fi Platform with DeFi tools, built via Layer1 app-specific blockchain (ASBC) in the Cosmos Network. 
-  UnUniFi provides the tools and features necessary to integrate peer-to-peer DeFi functionality into NFT ecosystems, with an internal NFT marketplace and cross-chain products developed for both retail and institutional users. 
-  This includes the first NFTFi Platform to create a proprietary NFT valuation algorithm calculated using real demand data, while allowing users to engage in DeFi activities to generate earnings or rewards from a variety of lending/borrowing/financing activities and third party protocols relating to NFTs, through an interchain yield aggregator. 
-  UnUniFi provides the infrastructure to be the NFT-Fi Hub for Cosmos and beyond. 
-  Our mission is to "Give all NFTs the opportunity to DeFi".
+In the rapidly evolving landscape of blockchain technology, the management of on-chain assets continues to expand in complexity and capability, giving rise to the urgent need for innovative management solutions. The current methods in which these assets can be deployed to competitively earn yield are ripe for disruption. UnUniFi‘s dynamic Asset Management Platform aims to revolutionize the efficient operation of these assets across many blockchains. Cross-chain support, access to the best-in-class yield opportunities, and permissionless vault creation are just a few of the exciting features available on UnUniFi (pronounced “un-unify”). Supported by esteemed investors like Gumi Cryptos Capital and more, UnUniFi is on a mission to democratize asset management, catering to both retail and institutional stakeholders. Let’s take a deep dive into what UnUniFi is all about.
 \end{abstract}
 
-\section{Introduction}
+\section{Problems}
 
-\subsection{Problems faced by NFTs and NFTFi}
-Many regard NFTs - digital blockchain assets that can sometimes depict or be paired to real-world objects - with healthy skepticism. 
-Liquidity and demand generation issues prevent participants from easily unlocking the intrinsic value of their assets. 
-Institutional users are penalized when looking to diversify into NFT markets at scale. 
-NFT markets suffer from concentrated and easily manipulated liquidity pools. 
-Current pricing models generally fail to consider value changes based on rare NFT assets within a particular collection. 
-Additionally, many current NFTFi solutions are limited in scope, cost-prohibitive, and often create unfavorable lending terms for both platform users and platform lenders.
+\subsection{Problems in DeFi asset management for Users}
+Users must spend a large amount of time and effort across many apps and blockchains to find efficient DeFi strategies. Users cannot easily access complex strategies such as CeFi, RWAs, or Collateralized Assets as part of their portfolio management. Users cannot easily customize their exposure to specific DeFi + CeFi strategies.
 
-\subsection{The rise of NFT + Decentralized Finance (DeFi)}
-DeFi is short for “Decentralized Finance”, a generalized umbrella term used to describe a variety of peer-to-peer cryptocurrency and blockchain-based financial applications geared towards disrupting legacy financial institutions. 
-DeFi is not reliant on central financial intermediaries such as brokerages, exchanges, or banks to officer users access to traditional financial instruments, and instead utilizes smart contract-based applications that are built on top of existing blockchain-based platforms. 
-In regard to DeFi, there is a growing movement to make peer-to-peer finance more efficient with use-cases not only limited to exchanging tokens, but also realizing existing financial products (such as corporate stocks) on the blockchain.
-NFT-Fi (NFT × DeFi) technology seeks to provide DeFi utility to NFTs, increasing tradability and capital efficiency to establish legitimacy for NFTs, regarding them as a true asset class or store of value. 
-“NFTs are undoubtedly becoming a gateway into the DeFi space for mainstream audiences” said Lauren Stephanian, a principal at Pantera Capital.
+\subsection{Problems in liquidity management for DeFi Protocols and Institutions}
+Strategy providers (yield pool creators/borrowers) suffer from fragmented liquidity across chains due to the difficulties and high cost of creating multi-chain support.
 
-\subsection{Our advantage over other NFTFi solutions}
-As a technology in its early adoption phase, NFT-Fi needs to be easily accessible, easy to understand, flexible, and scalable to encourage continued adoption. 
-While other NFTFi platforms employ a peer-to-peer or liquidity-pool lending model, UnUniFi combines real demand for the NFT with its intrinsic demand; this is used to facilitate quick liquidity aggregation which gives NFT holders faster and more flexible access to lending. 
-Our technology is scalable for institutional users and can be implemented externally on platforms as an NFT valuation oracle. 
-UnUniFi aims to be a DApps platform with NFT price information at its core.
+\section{UnUniFi: A New Standard for Cross-Chain Asset Management}
+UnUniFi distinguishes itself from other Asset Management and Yield Aggregation platforms by addressing the limitations and challenges faced by existing solutions. UnUniFi leverages the Cosmos SDK and IBC to ensure maximum scalability; speed; security; and cross-chain interoperability, making it an ideal hub for Asset Management. Regardless of a user’s source chain, UnUniFi streamlines the process, ensuring that every DeFi user can seamlessly access the platform. UnUniFi empowers users to access an unlimited number of yield strategies, while sourcing strategies from the best DeFi protocols and CeFi services. This unique DeFi + CeFi approach enables users to receive unprecedented customizability when managing their assets, all within one easy-to-use cross-chain dashboard.
+Meanwhile, strategy providers can leverage UnUniFi’s cross-chain support to deploy their contracts and source global liquidity across blockchains. Professionally operated and custodied strategies are compliant for Institutional and Accredited Investors. UnUniFi’s asset management platform is a one-stop solution enabling individuals, DAOs, funds, and other protocols to earn yield against unlimited strategies, featuring the best DeFi strategies, CeFi strategies, RWAs, and Collateralized Assets.
+
+
+\section{UnUniFi’s Core Application: UnUniFi Yield Aggregator (UYA)}
+
+Powering the Asset Management Platform is UnUniFi’s core application, the UnUniFi Yield Aggregator, or UYA. The UYA app functions as a cross-chain hub, enabling users to explore the true possibilities of cross-chain asset operation. The unlimited creation of Yield Strategies and Vaults fosters competitive and diverse opportunities.
+
+\subsection{How are Yield Strategies aggregated (sourced)}
+\begin{itemize}
+  \item Chain-agnostic, seamless integration with the best DeFi protocols + CeFi Services, enabling access to the higher performing Yield Strategies. In this method, UnUniFi will directly integrate with the source Pool, even if it is on an external chain.
+  \item Unlimited strategy creation, allowing any strategy provider to deploy their pool on UnUniFi while fostering cross-chain interoperability and minimizing liquidity fragmentation.
+\end{itemize}
+
+
+\subsection{What are the types of Yield Strategies supported?}
+\begin{enumerate}
+  \item DeFi Strategies（e.g. DeFi Protocols, AMM）
+  \item CeFi Strategies(KYC required)（e.g. centralized lending (CeFi RWA)）
+  \item Collateralized Assets（e.g. non-fungible assets, Fine-Art, Luxury, Tokenized Assets, Tokenized DeFi Positions）
+\end{enumerate}
+
+\subsection{How do users use the UYA?}
+\begin{itemize}
+  \item Basic Users can manage (deposit) any asset type into a vault of their choice, with the vault being composed of one or more underlying strategies. For the average user, the UYA App will be able to display the highest performing yield strategies and vaults, easily allowing them to select a pre-created vault and automatically participate in the highest performing strategies.
+  \item Advanced Users can leverage an unprecedented level of customization, with the UYA App allowing anyone to autonomously manage their portfolio exposure by creating their own Vault (permissionless vault creation). This allows for the combination and selection of DeFi + CeFi strategies within the same Vault, while allowing the creator to also specify the weightings of the underlying strategies. Anyone can create a vault, so long as it has not already been created (duplicated vaults will be rejected).
+  \item Institutional Users and Accredited Investors (e.g. Funds as Lenders) can manage their assets by depositing funds into CeFi + DeFi strategies. Professionally managed and compliant CeFi + DeFi strategies will be supported via Qualified Custodian.
+\end{itemize}
+
+\subsection{The ﬂow of UYA}
+\begin{enumerate}
+  \item Deposit tokens into the IYA module for UnUniFi Protocol.
+  \item Specify a strategy based on the information provided by the data provider and select contract
+  \item Initiate participation by sending TX from the contract to the other chain through an interchain account.
+\end{enumerate}
+
+\subsection{The process of receiving rewards}
+\begin{enumerate}
+  \item Users claim rewards in the UYA module for UnUniFi Protocol.
+  \item The UYA receives rewards on the contract the user selected.
+  \item The contract receives from the chain from which the user had initiated the participation.
+  \item The contract sends rewards from the other chain to UnUniFi Protocol.
+  \item UYA sends tokens to the user.
+\end{enumerate}
+
+
+\subsection{How do Strategy Providers use the UYA?}
+Strategy providers can create and deploy their contracts/pools on UnUniFi. This mechanism is cross-chain enabled and can be utilized by any party. Below are two examples:
+\begin{itemize}
+  \item DeFi Protocols (e.g. Automated Market Makers) can add their contracts to the UYA to source global liquidity, fostering cross-chain interoperability and minimizing liquidity fragmentation (by eliminating the need to deploy a pool on multiple chains).
+  \item Institutions (e.g. Funds as Borrowers) can create their own lending pool for users, allowing them to aggregate global liquidity and borrow funds from the pool.
+\end{itemize}
 
 
 \section{NFT collateral lending}
@@ -270,31 +305,6 @@ $$
   \frac{d_i + \sum_{j \in J_i} \text{unannualize}(r_i; t_{i,j}, t) b_{i,j}}{\sum_{l=k^*}^n \left(d_{i_d(l)} + \sum_{j \in J_{i_d(l)}} \text{unannualize}(r_{i_d(l)}; t_{i_d(l),j}, t) b_{i_d(l),j} \right)} \left( p_{i_d(k^*)} + \sum_{l=1}^{k^*} d_{i_d(l)} \right)
 $$
 
-\section{Interchain Yield Aggregator}
-
-Describing Auto DeFi Yield with our “Interchain Yield Aggregator”. Easily utilize assets for yield farming via participation in third party protocols through an Interchain Yield Aggregator directly integrated into UnUniFi Protocol. 
-Yield Farming strategy availability can be extended by deploying an adapter made with CosmWasm via third party communities. 
-Interchain support ensures a variety of high yield strategies (where token rewards may be earned via engaging with third party protocols) are made available to platform users at their selection. 
-Borrowers can leverage their NFT assets for yield farming by using borrowed funds. 
-Liquidity providers can also experience the same benefits by receiving rewards on any assets deposited. 
-Auto DeFi Yield ensures capital efficiency, so that tokenized assets deposited into our protocol are able to participate competitively, even when not actively being used in the platform.
-
-\subsection{The flow of Interchain Yield Aggregator}
-\begin{enumerate}
-  \item Deposit tokens into the IYA module for UnUniFi Protocol.
-  \item Specify a strategy based on the information provided by the data provider and select contract.
-  \item Initiate participation by sending TX from the contract to the other chain through an interchain account.
-\end{enumerate}
-
-\subsection{The process of receiving rewards}
-\begin{enumerate}
-  \item Users claim rewards in the Interchain Yield Aggregator module for UnUniFi Protocol.
-  \item The Interchain Yield Aggregator receives rewards on the contract the user selected.
-  \item The contract receives from the chain from which the user had initiated the participation
-  \item The contract sends rewards from the other chain to UnUniFi Protocol.
-  \item Interchain Yield Aggregator sends tokens to the user.
-\end{enumerate}
-
 \section{Derivatives}
 
 \subsection{Counterpart Liquidity Pool}
@@ -423,16 +433,13 @@ However, with our Decentralized Frontend, we can expand the ecosystem to include
 This contribution to community inclusion inherently furthers our ecosystem by allowing anyone to build onto it. 
 A Decentralized Frontend will also simultaneously inspire both localization and mass adoption by allowing the creation of a Frontend that is hyper-focused for each region and category of usage.
 We believe that the “Decentralized Frontend” is an effective method to expand our ecosystem. 
-In other terms, creating a system that operates like an infrastructure layer for NFT-Fi, allowing our platform to easily integrate into pre-existing NFT ecosystems, marketplaces, and similar use-cases.
 
 \subsection{How do we Incentivize Frontend Development?}
 It is one thing to create an environment where our frontend can specifically be distributed and decentralized based on user needs, but how do we encourage these boutique integrations or unique Frontends? 
 Our ecosystem incentive modules aim to reward early adopters who help to expand and realize our decentralized ecosystem.
 Our latest implementation of this incentive model is a system that distributes rewards to a frontend creator based on the NFT trading fee (excluding gas fee) collected when using that specific creator’s frontend. 
-For example, if someone lists an NFT on A’s frontend and that NFT is sold for \$10,000 then A will receive \$250 as a reward (assuming trading fee rate = 5\% and NFT market frontend reward rate = 5\%.) 
 Therefore, reward distribution is perfectly proportional to the actual trading volume.
 In theory, this module will provide a competitive incentive for the parties which bring value to our ecosystem — motivating Frontend service creators (developers). 
-Some of the various applications for custom Frontends can include NFT markets for real estate NFTs; art collections; financial instruments; PFPs; GameFi, and more... 
 These unique Frontend service creators can then become candidates to receive the Ecosystem Incentive Reward, generated from the various fees accumulated.
 
 \section{GUU token distribution}
@@ -490,6 +497,15 @@ The right to vote is restricted solely to voting on features of the UnUniFi Prot
   \end{tabular}
 \end{table}
 
+\section{Tokens specifications}
+
+\begin{table}[htb]
+  \begin{tabular}{|l|l|l|}  \hline
+    initial Supply & 1,000,000,000 GUU \\ \hline
+    Inflation rate range & 7\%~20\% \\ \hline
+  \end{tabular}
+\end{table}
+
 \section{Governance specifications}
 
 \begin{table}[htb]
@@ -509,7 +525,7 @@ The right to vote is restricted solely to voting on features of the UnUniFi Prot
 
 
 \section{About Us}
-The UnUniFi Protocol is owned by the UnUniFi Project Contributors which is a leading technologist company of Cosmos blockchain technologies.
+The UnUniFi Protocol is owned by the UnUniFi Project Contributors.
 
 \section{Legal Disclaimer}
 PLEASE READ THE ENTIRETY OF THIS "LEGAL DISCLAIMER" SECTION CAREFULLY. NOTHING HEREIN CONSTITUTES LEGAL, FINANCIAL, BUSINESS OR TAX ADVICE AND YOU ARE STRONGLY ADVISED TO CONSULT YOUR OWN LEGAL, FINANCIAL, TAX OR OTHER PROFESSIONAL ADVISOR(S) BEFORE ENGAGING IN ANY ACTIVITY IN CONNECTION HEREWITH. NEITHER UNUNIFI S.A. (THE COMPANY), ANY OF THE PROJECT CONTRIBUTORS (THE UNUNIFI PROJECT CONTRIBUTORS) WHO HAVE WORKED ON THE UNUNIFI PROTOCOL (AS DEFINED HEREIN) OR PROJECT TO DEVELOP THE UNUNIFI PROTOCOL IN ANY WAY WHATSOEVER, ANY DISTRIBUTOR AND/OR VENDOR OF GUU TOKENS (OR SUCH OTHER RE-NAMED OR SUCCESSOR TICKER CODE OR NAME OF SUCH TOKENS) (THE DISTRIBUTOR), NOR ANY SERVICE PROVIDER SHALL BE LIABLE FOR ANY KIND OF DIRECT OR INDIRECT DAMAGE OR LOSS WHATSOEVER WHICH YOU MAY SUFFER IN CONNECTION WITH ACCESSING THE PAPER, DECK OR MATERIAL RELATING TO GUU (THE TOKEN DOCUMENTATION) AVAILABLE ON THE WEBSITE AT HTTPS://UNUNIFI.IO/ (THE WEBSITE, INCLUDING ANY SUB-DOMAINS THEREON) OR ANY OTHER WEBSITES OR MATERIALS PUBLISHED OR COMMUNICATED BY THE COMPANY OR ITS REPRESENTATIVES FROM TIME TO TIME.\\
